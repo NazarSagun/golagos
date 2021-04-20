@@ -1,0 +1,160 @@
+.beach-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 40px;
+  margin: 120px 120px;
+}
+
+.beaches-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.beach-size-icon {
+  position: absolute;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s linear;
+  z-index: 5;
+}
+
+.beach-single-container:hover .beach-size-icon {
+  opacity: 1;
+  z-index: 5;
+}
+
+.b-cards-items {
+  position: relative;
+  height: 530px;
+  border: 1px solid rgba(238, 238, 238, 0);
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.b-cards-items:hover {
+  border: 1px solid rgb(238, 238, 238);
+}
+
+.beach-single-container {
+  position: relative;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.beach-single-container:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(8, 8, 8, 0.178);
+  transition: all 0.2s linear;
+}
+
+.beach-single-container:hover::after {
+  opacity: 1;
+}
+
+.beach-cards div {
+  position: relative;
+  height: 400px;
+}
+
+.beach-cards-title {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  color: #000;
+  padding: 10px;
+  background-color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dir-button {
+  display: flex;
+  justify-content: center;
+}
+
+.dir-button a {
+  padding: 10px 20px;
+  background-color: rgb(88, 168, 214);
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
+
+.modal {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.6); /* Overlay effect: translucent background: black w/ partial opacity */
+  z-index: 10; /* Overlay effect: positioned over other containers */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  position: fixed; /* Fix position on the top-left corner*/
+  top: 0;
+  left: 0;
+  overflow: auto; /* Enable scroll if needed */
+  padding-top: 80px; /* Location of the content container */
+}
+
+.modal-content {
+  position: relative;
+  width: 90%; /* Width in proportion to its parent container*/
+  height: 90%; /* Height in proportion to its parent container */
+  margin: auto;
+  z-index: 10; /* Auto margin according to the element width */
+}
+
+.modal-flex {
+  display: flex;
+  height: 100%; 
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-info {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: all 0.2s linear;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(173, 209, 219);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .beach-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 40px;
+    margin: 120px 0;
+  }
+}

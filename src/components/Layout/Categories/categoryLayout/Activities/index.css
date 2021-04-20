@@ -1,0 +1,41 @@
+.tab-container {
+  display: flex;
+}
+
+.act-button {
+  display: flex;
+  justify-content: center;
+}
+
+.act-button a {
+  width: 300px;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: rgb(88, 168, 214);
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
+
+.act-space {
+  width: 180px;
+}
+
+@media screen and (max-width: 768px) {
+  .act-button a {
+    width: 200px;
+    text-align: center;
+  }
+  .act-space {
+    width: 100px;
+  }
+}
+@media screen and (max-width: 414px) {
+  .act-button a {
+    width: 120px;
+    text-align: center;
+  }
+  .act-space {
+    width: 40px;
+  }
+}

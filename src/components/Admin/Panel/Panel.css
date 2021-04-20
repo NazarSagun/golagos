@@ -1,0 +1,43 @@
+.panel-form {
+  width: 400px;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.panel-form label {
+  display: block;
+}
+
+.panel-form input {
+  width: 100%;
+  margin-left: 20px;
+  border: 1px solid #eee;
+  padding: 5px;
+}
+
+.panel-form button {
+  display: block;
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 5px 10px;
+  background-color: #636363;
+  color: #fff;
+  cursor: pointer;
+}
+
+.logout-button {
+  float: right;
+  margin-right: 30px;
+  color: #636363;
+}
+
+.panel-title {
+  margin-left: 30px;
+}
+
+.error-message {
+  color: tomato;
+  padding: 5px;
+  
+}
