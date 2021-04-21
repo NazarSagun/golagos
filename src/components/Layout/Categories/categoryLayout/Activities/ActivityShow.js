@@ -20,6 +20,13 @@ class ActivityShow extends React.Component {
     }
   }
 
+  selectModal = (info = "") => {
+    this.setState({
+      modal: !this.state.modal,
+      modalInfo: info
+    });
+  }
+
   render() {
     return (
       <main>
