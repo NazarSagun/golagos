@@ -26,7 +26,7 @@ const SideNavBar = ({ close, display }) => {
         <Link to="/Services"><li> Services </li></Link>
         <Link to="/Real Estate"><li> Real Estate </li></Link>
         <Link to="/AboutUs"><li> About Us </li></Link>
-        <Select items={languages}/>
+        {/* <Select items={languages}/> */}
       </ul>
     </nav>
   );
