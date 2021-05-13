@@ -1,30 +1,57 @@
 import React from "react";
 import "./index.css";
-import {changeLanguage} from '../../../actions';
+import {fetchLanguage} from '../../../actions';
 
-import {Link} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import { connect } from "react-redux";
-import SelectContainer from './SelectContainer';
+import Select from './Select';
 
+const nav = [
+  {id: 1, link: '/Lagos', name: 'Lagos'},
+  {id: 2, link: '/Services', name: 'Services'},
+  {id: 3, link: '/Real Estate', name: 'Real Estate'},
+  {id: 4, link: '/AboutUs', name: 'About Us'},
+];
+
+const language = [
+  { id: 0, value: 'en', icon: 'united-kingdom.png'},
+  { id: 1, value: 'de', icon: 'germany.png'},
+  { id: 2, value: 'pt', icon: 'portugal.png'}
+]
 
 class NavBar extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      opacity: ''
+      opacity: '',
+      logo: '',
+      menu: '',
+      dropdawn: false
+    };
+    this.onClick = this.onClick.bind(this)
+    
+  }
+
+  onClick = () => {
+    if (this.state.dropdawn) {
+      this.setState({dropdawn: false})
+    } else {
+      this.setState({dropdawn: true})
     }
   }
 
   onScroll = (e) => {
     if(window.scrollY > 100) {
-      return this.setState({opacity: 'set-opacity'})
+      return this.setState({opacity: 'set-opacity', logo: 'logo-black', menu: 'menu-black'})
     } else {
-      this.setState({opacity: ''})
+      this.setState({opacity: '', logo: '', menu: ''})
     }
   }
 
   componentDidMount() {
+
+    this.props.fetchLanguage()
 
     window.addEventListener('scroll', this.onScroll);
 
@@ -35,27 +62,30 @@ class NavBar extends React.Component {
 
   render() {
 
+   
     
     return (
       <nav className={`nav-bar ${this.state.opacity}`}>
-        <div className="nav-logo"><Link to={'/'}>LOGO</Link></div>
-        {/* <div className="nav-space" /> */}
+        <Link to={'/'}>
+          <div className="nav-logo">
+          
+            <img className={`${this.state.logo}`} src="images/icons/logo-lagos.svg" />
+         
+          </div>
+        </Link>
         <div className="nav-items">
-          <ul>
-            <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/login'}>Lagos</Link></li>
-            <li><Link to={'/admin'}>Services</Link></li>
-            <li><Link to={'/admin'}>Real Estate</Link></li>
-            <li><Link to="/aboutUs">Contacts</Link></li>
-          </ul>
-          
-          
+          {nav.map(i => {
+            return (
+              <div key={i.id}><NavLink exact className="link-hover" activeClassName="active" to={i.link}>{i.name}</NavLink></div> 
+            )
+          })}
+        
         </div>
-        <SelectContainer onChange={this.props.onChange} value={this.props.value} />
 
-       
+        <Select language={this.props.language} items={language} />
+
         <div onClick={this.props.open} className="nav-icon">
-          <img src={require('../../../assets/icons/baseline_dehaze_black_18dp.png').default} />
+          <img className={`${this.state.menu}`} width="20px" src='images/icons/menu.svg' />
         </div>
       </nav>
     );
@@ -64,8 +94,8 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    language: state.language.lang
+    language: state.language.selectedLanguage
   }
 }
 
-export default connect(mapStateToProps, {changeLanguage})(NavBar);
+export default connect(mapStateToProps, {fetchLanguage})(NavBar);

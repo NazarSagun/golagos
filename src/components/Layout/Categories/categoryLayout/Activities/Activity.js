@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-import {fetchActivityItem} from '../../../../../actions';
+import {fetchActivity} from '../../../../../actions';
 import { connect } from 'react-redux';
 
 import Loader from '../../../../HOC/Loader';
@@ -17,7 +16,7 @@ class Activity extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this.props.fetchActivityItem(this.props.match.params.id);
+    this.props.fetchActivity(this.props.match.params.id);
   }
 
   componentWillUnmount() {
@@ -25,14 +24,13 @@ class Activity extends React.Component {
   }
 
   render() {
-    console.log(this.props)
 
-    const render = !this.props.activity ? <Loader /> : <ActivityShow activity={this.props.activity} />
+    
 
     return (
       <div>
         <Navigation />
-        {render}
+        {!this.props.activity ? <Loader /> : <ActivityShow activity={this.props.activity} />}
         <Footer />
       </div>
     )
@@ -41,8 +39,9 @@ class Activity extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    activity: state.data.data[ownProps.match.params.id]
+    activity: state.data.activity[ownProps.match.params.id],
+    isFetching: state.data.isFetching
   }
 }
 
-export default connect(mapStateToProps, {fetchActivityItem})(Activity);
+export default connect(mapStateToProps, {fetchActivity})(Activity);

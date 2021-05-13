@@ -48,41 +48,41 @@ class BeachSingleShow extends React.Component {
         <h1 className="cat-title">{this.props.beach.name}</h1>
         <h3 className="cat-descr">{this.props.beach.description}</h3>
       </section>
-      <section className="beach-cards">
-        <article onClick={() => this.selectModal('Modal 1')} className="beach-single-container">
+      <section className="category-cards">
+        <article onClick={() => this.selectModal('Modal 1')} className="single-container">
           <div>
-            <img className="beaches-img" src={`images/categories/${this.props.beach.img1}`} />
-            <img className="beach-size-icon" src="/images/icons/full-size.png" />
+            <img className="cards-img" src={`images/categories/${this.props.beach.img1}`} />
+            <img className="size-icon" src="/images/icons/full-size.png" />
           </div>
         </article>
-        <article onClick={() => this.selectModal('Modal 2')} className="beach-single-container">
+        <article onClick={() => this.selectModal('Modal 2')} className="single-container">
           <div>
-            <img className="beaches-img" src={`images/categories/${this.props.beach.img2}`} />
-            <img className="beach-size-icon" src="/images/icons/full-size.png" />
+            <img className="cards-img" src={`images/categories/${this.props.beach.img2}`} />
+            <img className="size-icon" src="/images/icons/full-size.png" />
           </div>
         </article>
-        <article onClick={() => this.selectModal('Modal 3')} className="beach-single-container">
+        <article onClick={() => this.selectModal('Modal 3')} className="single-container">
           <div>
-            <img className="beaches-img" src={`images/categories/${this.props.beach.img3}`} />
-            <img className="beach-size-icon" src="/images/icons/full-size.png" />
+            <img className="cards-img" src={`images/categories/${this.props.beach.img3}`} />
+            <img className="size-icon" src="/images/icons/full-size.png" />
           </div>
         </article>
-        <article onClick={() => this.selectModal('Modal 4')} className="beach-single-container">
+        <article onClick={() => this.selectModal('Modal 4')} className="single-container">
           <div>
-            <img className="beaches-img" src={`images/categories/${this.props.beach.img4}`} />
-            <img className="beach-size-icon" src="/images/icons/full-size.png" />
+            <img className="cards-img" src={`images/categories/${this.props.beach.img4}`} />
+            <img className="size-icon" src="/images/icons/full-size.png" />
           </div>
         </article>
-        <article onClick={() => this.selectModal('Modal 5')} className="beach-single-container">
+        <article onClick={() => this.selectModal('Modal 5')} className="single-container">
           <div>
-            <img className="beaches-img" src={`images/categories/${this.props.beach.img5}`} />
-            <img className="beach-size-icon" src="/images/icons/full-size.png" />
+            <img className="cards-img" src={`images/categories/${this.props.beach.img5}`} />
+            <img className="size-icon" src="/images/icons/full-size.png" />
           </div>
         </article>
-        <article onClick={() => this.selectModal('Modal 6')} className="beach-single-container">
+        <article onClick={() => this.selectModal('Modal 6')} className="single-container">
           <div>
-            <img className="beaches-img" src={`images/categories/${this.props.beach.img6}`} />
-            <img className="beach-size-icon" src="/images/icons/full-size.png" />
+            <img className="cards-img" src={`images/categories/${this.props.beach.img6}`} />
+            <img className="size-icon" src="/images/icons/full-size.png" />
           </div>
         </article>
       </section>

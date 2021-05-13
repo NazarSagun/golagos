@@ -41,7 +41,7 @@ const ActivityCategory = () => {
       <form className="main-section-form" name="form" onSubmit={onSubmit}>
         <h1>Main Activities</h1>
         <div>
-          <label htmlFor="cat_name">Main Activity Title</label>
+          <label htmlFor="cat_name">Title</label>
           <input id="sub_cat_name" type='text' value={title} onChange={onTextChange} />
         </div>
         

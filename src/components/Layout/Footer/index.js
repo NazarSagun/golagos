@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 import './index.css';
 
 class Footer extends React.Component {
@@ -34,16 +36,36 @@ class Footer extends React.Component {
             <h5>Usefull Links</h5>
           </div>
           <div>
-            <img />
-            <span>About Us</span>
+            <Link to="/AboutUs">
+              <img src="images/icons/arrow-footer.png" />
+              <span>About Us</span>
+            </Link>
           </div>
           <div>
-            <img />
-            <span>Welcome Page</span>
+            <Link to="/">
+              <img src="images/icons/arrow-footer.png" />
+              <span>Welcome Page</span>
+            </Link>
           </div>
           <div>
-            <img />
-            <span>Sagres</span>
+            <Link to="/Lagos">
+              <img src="images/icons/arrow-footer.png" />
+              <span>Lagos</span>
+            </Link>
+          </div>
+          <div>
+            <Link to="/Testimonials">
+              <img src="images/icons/arrow-footer.png" />
+              <span>Testimonials</span>
+            </Link>
+          </div>
+          <div className="footer-social">
+            <a href="#"><img src="images/icons/facebook-footer.png" /></a>
+            <a href="#"><img src="images/icons/dribbble-footer.png" /></a>
+            <a href="#"><img src="images/icons/vimeo-footer.png" /></a>
+            <a href="#"><img src="images/icons/twitter-footer.png" /></a>
+            <a href="#"><img src="images/icons/behance-footer.png" /></a>
+            
           </div>
         </div>
       </div>

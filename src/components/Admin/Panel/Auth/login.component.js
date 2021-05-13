@@ -61,7 +61,7 @@ class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       dispatch(login(this.state.username, this.state.password))
         .then(() => {
-          history.push("/admin/panel");
+          history.push("/Admin/Panel");
           window.location.reload();
         })
         .catch(() => {
@@ -82,7 +82,7 @@ class Login extends Component {
     const { isLoggedIn, message } = this.props;
 
     if (isLoggedIn) {
-      return <Redirect to="/admin/panel" />;
+      return <Redirect to="/Admin/Panel" />;
     }
 
     return (

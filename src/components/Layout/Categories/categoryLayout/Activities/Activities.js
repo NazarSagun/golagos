@@ -18,10 +18,10 @@ class Activities extends React.Component {
     super(props);
   }
 
-  // componentDidMount() {
-  //   this._isMounted = true;
-  //   this.props.fetchActivities();
-  // }
+  componentDidMount() {
+    this._isMounted = true;
+    this.props.fetchActivities();
+  }
 
   componentWillUnmount() {
     this._isMounted = false;
@@ -29,29 +29,23 @@ class Activities extends React.Component {
   
   render() {
 
-    // const prevAct = this.props.activities;
-    // const newAct = prevAct.filter((set => a => !set.has(a.item_id) && set.add(a.item_id))(new Set));
-
     return (
       <React.Fragment>
         <Navigation />
         <ActivitiesSlider />
         <MiddleInfo />
-          {/* {!this.props.activities ? <Loader /> : } */}
-        <ActivityItems />
+        {this.props.isFetching ? <Loader /> : <ActivityItems activities={this.props.activities} /> }
         <Footer />
       </React.Fragment>
     )
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     activities: state.data.data,
-//     // activities: Object.values(state.data.data),
-//     isFetching: state.data.isFetching
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    activities: Object.values(state.data.activities),
+    isFetching: state.data.isAFetching
+  }
+}
 
-export default Activities;
-// connect(mapStateToProps, {fetchActivities})
+export default connect(mapStateToProps, {fetchActivities})(Activities);

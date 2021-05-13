@@ -1,13 +1,14 @@
 import React from 'react';
 import './index.css';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const categories = [
   {
     id: 1,
     cat_en_name: 'Beaches',
     cat_de_name: 'Beachesde',
-    cat_pt_name: 'Beachespt',
+    cat_pt_name: 'Praias',
     cat_img: 'main-page.jpg',
   },
   {
@@ -40,7 +41,7 @@ const categories = [
   },
   {
     id: 6,
-    cat_en_name: 'Design',
+    cat_en_name: 'Points of Interest',
     cat_de_name: 'Designde',
     cat_pt_name: 'Designpt',
     cat_img: 'main-page.jpg',
@@ -62,44 +63,48 @@ const categories = [
 ]
 
 class RenderCategories extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedLanguage: 'en'
-    }
-  } 
 
   render() {
 
     return (
       <section className="cards">
         {categories.map(cat => {
-          // if (localStorage.lang === 'en') {
+          if (this.props.language === 'united-kingdom.png') {
+            return (
+              
+              <article className="main-page-article" key={cat.id}>
+                <Link to={`/${cat.cat_en_name}`}>
+                <img src={`images/categories/${cat.cat_img}`} />
+                <h1 className="article-title">{cat.cat_en_name}</h1>
+                </Link>
+              </article>
+              
+            )
+          } else if (this.props.language === 'germany.png') {
             return (
               <article className="main-page-article" key={cat.id}>
                 <img src={`images/categories/${cat.cat_img}`} />
-                <Link to={`/${cat.cat_en_name}`}><h1 className="article-title">{cat.cat_en_name}</h1></Link>
+                <Link to={`/${cat.cat_en_name}`}><h1 className="article-title">{cat.cat_de_name}</h1></Link>
               </article>
             )
-          // } else if (localStorage.lang === 'de') {
-          //   return (
-          //     <article className="main-page-article" key={cat.id}>
-          //       <img src={`images/categories/${cat.cat_img}`} />
-          //       <Link to={`/${cat.cat_en_name}`}><h1 className="article-title">{cat.cat_de_name}</h1></Link>
-          //     </article>
-          //   )
-          // } else if (localStorage.lang === 'pt') {
-          //   return (
-          //     <article className="main-page-article" key={cat.id}>
-          //       <img src={`images/categories/${cat.cat_img}`} />
-          //       <Link to={`/${cat.cat_en_name}`}><h1 className="article-title">{cat.cat_pt_name}</h1></Link>
-          //     </article>
-          //   )
-          // }
+          } else if (this.props.language === 'portugal.png') {
+            return (
+              <article className="main-page-article" key={cat.id}>
+                <img src={`images/categories/${cat.cat_img}`} />
+                <Link to={`/${cat.cat_en_name}`}><h1 className="article-title">{cat.cat_pt_name}</h1></Link>
+              </article>
+            )
+          }
         })}
       </section>
     )
   }
 }
 
-export default RenderCategories;
+const mapStateToProps = (state) => {
+  return {
+    language: state.language.selectedLanguage
+  }
+}
+
+export default connect(mapStateToProps) (RenderCategories);

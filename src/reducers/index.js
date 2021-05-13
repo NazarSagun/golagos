@@ -1,12 +1,11 @@
 import {combineReducers} from 'redux';
-import categoriesReducer from '../reducers/categoryReducer';
-import changeLanguage from '../reducers/langReducer';
+import langReducer from '../reducers/langReducer';
 import dataReducer from './dataReducer';
 import auth from './auth';
 import message from './message';
 
 export default combineReducers({
-  language: changeLanguage,
+  language: langReducer,
   data: dataReducer,
   auth,
   message,

@@ -27,8 +27,7 @@ export default class Navigation extends React.Component {
     const mystyle = {
       position: "fixed",
       width: "100%",
-      height: "100hv",
-      backgroundImage: `url('/client/src/assets/image/main-page.jpg')`,
+      // height: "100hv",
       zIndex: 999
     }
 

@@ -6,14 +6,22 @@ import {Route, HashRouter as Router, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { clearMessage } from "../actions/message";
 //import components
-// import Admin from './Admin/Admin';
+import ScrollToTop from '../services/ScrollToTop';
 import Login from './Admin/Panel/Auth/login.component';
 import Panel from './Admin/Panel/Panel';
 import MainPage from './Layout/MainPage/MainPage';
 import Categories from './Layout/Categories/Categories';
 import AboutUs from './Layout/AboutUs';
 import BeachSingle from './Layout/Categories/categoryLayout/Beaches/BeachSingle';
+import MixedSingle from './Layout/MainPage/MixedActivity/MixedSingle';
+import AccomodationSingle from './Layout/Categories/categoryLayout/Accomodation/AccomodationSingle';
 import Activity from './Layout/Categories/categoryLayout/Activities/Activity';
+import Shop from './Layout/Categories/categoryLayout/Shop/Shop';
+import EstateSingle from './Layout/Categories/categoryLayout/RealEstate/EstateSingle';
+import PointSingle from './Layout/Categories/categoryLayout/Points/PointSingle';
+import LearnSingle from './Layout/Categories/categoryLayout/Learn/LearnSingle';
+import Lagos from './Layout/Categories/categoryLayout/Lagos/Lagos';
+import Services from './Layout/Services';
 
 class App extends React.Component {
 
@@ -47,16 +55,26 @@ class App extends React.Component {
     return (
       <div className="container">
         <Router history={history}>
+          <ScrollToTop>
             <Switch>
               <Route path="/" exact component={MainPage} />
-              <Route path="/login" exact component={Login} />
-              <Route path="/aboutUs" exact component={AboutUs} />
+              <Route path="/Login" exact component={Login} />
+              <Route path="/AboutUs" exact component={AboutUs} />
+              <Route path="/Services" exact component={Services} />
+              <Route path="/Lagos" exact component={Lagos} />
               <Route path="/:name" exact component={Categories} />
-              <Route path="/beaches/:id" exact component={BeachSingle} />
-              <Route path="/activities/:id" exact component={Activity} />
-              <Route path="/admin/panel" exact component={Panel} />
+              <Route path="/Beaches/:id" exact component={BeachSingle} />
+              <Route path="/Individual/:id" exact component={MixedSingle} />
+              <Route path="/Accomodation/:id" exact component={AccomodationSingle} />
+              <Route path="/Shopping/:id" exact component={Shop} />
+              <Route path="/Activities/:id" exact component={Activity} />
+              <Route path="/Learn/:id" exact component={LearnSingle} />
+              <Route path="/Estate/:id" exact component={EstateSingle} />
+              <Route path="/Point/:id" exact component={PointSingle} />
+              <Route path="/Admin/Panel" exact component={Panel} />
               
             </Switch>
+          </ScrollToTop>
         </Router>
       </div>
     )

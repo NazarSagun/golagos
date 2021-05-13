@@ -2,16 +2,18 @@
   margin-top: 120px;
   justify-content: space-around;
   display: flex;
-  background-color: rgb(46, 40, 82);
+  background-color: rgb(142, 204, 255);
   font-family: 'Montserrat', sans-serif;
   color: #fff;
 }
 
 .footer-info div {
+  font-size: 15px;
   margin: 15px 0;
 }
 
 .footer-info span {
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -19,8 +21,9 @@
   position: relative;
   padding: 15px 0 10px 0;
   font-size: 30px;
-  font-weight: 600;
+  font-weight: bold;
 }
+
 
 .footer-f-title:after {
   content: '';
@@ -36,7 +39,28 @@
   position: relative;
   padding: 15px 0 10px 0;
   font-size: 30px;
-  font-weight: 600;
+  font-weight: bold;
+}
+
+.mob-margin a {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.mob-margin div {
+  margin-bottom: 10px;
+}
+
+.mob-margin img {
+  margin-right: 15px;
+}
+
+.footer-social img {
+  margin-top: 80px;
+  width: 25px;
 }
 
 .footer-s-title:after {
@@ -52,8 +76,8 @@
 .footer-rights {
   padding: 10px 0;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  background-color: rgb(30, 25, 53);
+  font-size: 10px;
+  background-color: rgb(142, 204, 255);
   text-align: center;
   color: #fff;
 }

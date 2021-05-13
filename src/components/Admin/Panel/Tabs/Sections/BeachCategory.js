@@ -1,4 +1,3 @@
-import { takeRightWhile } from 'lodash';
 import React, {useState} from 'react';
 import axios from '../../../../../api';
 
@@ -54,9 +53,6 @@ const BeachCategory = () => {
       return () => clearTimeout(timer)
     } catch (err) {
       setMessage('There was a problem with the server or you placed the same image');
-      setTitle('');
-      setDescription('');
-      setDirection('');
       const timer = setTimeout(() => {
         setMessage('')
       }, 2000);
@@ -77,30 +73,6 @@ const BeachCategory = () => {
           <input type='file' name="singleFile" multiple onChange={onChange} />
         </div>
         
-        {/* <div>
-          <label>Single Image 1</label>
-          <input type='file' onChange={onChange} />
-        </div>
-        <div>
-          <label>Single Image 2</label>
-          <input type='file' onChange={onChange} />
-        </div>
-        <div>
-          <label>Single Image 3</label>
-          <input type='file' onChange={onChange} />
-        </div>
-        <div>
-          <label>Single Image 4</label>
-          <input type='file' onChange={onChange} />
-        </div>
-        <div>
-          <label>Single Image 5</label>
-          <input type='file' name="file" onChange={onChange} />
-        </div>
-        <div>
-          <label>Single Image 6</label>
-          <input type='file' name="file" onChange={onChange} />
-        </div> */}
         <div>
           <label>Beach Description</label>
           <textarea style={{resize: 'vertical', outline: 'none'}} type='text' value={description} onChange={onDescriptionChange} />

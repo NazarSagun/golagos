@@ -14,15 +14,14 @@ class BeachItems extends React.Component {
     return (
       <React.Fragment>
         
-        <section className="beach-cards">
+        <section className="category-cards">
           {this.props.beaches.map(beach => {
             return (
               <Link key={beach.beach_id} to={`/Beaches/${beach.beach_id}`}>
-              <article className="b-cards-items">
+              <article className="category-cards-items">
                 <div>
-                  {/* <img className="beaches-plus" src="images/sub_categories/white-plus.png" /> */}
-                  <img className="beaches-img" src={`images/categories/${beach.img}`} />
-                  <h1 className="beach-cards-title">{beach.name}</h1>
+                  <img className="cards-img" src={`images/categories/${beach.img}`} />
+                  <h1 className="category-cards-title">{beach.name}</h1>
                 </div>
               </article>
               </Link>

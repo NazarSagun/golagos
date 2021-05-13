@@ -51,7 +51,7 @@ const ActivityItems = () => {
     Array.from(files).map(file => {
       formData.append('files', file);
     });
-    formData.append('activity_id', activityId);
+    formData.append('mainActivityId', activityId);
     formData.append('title', title);
     formData.append('description', description);
     formData.append('book', book);
@@ -87,12 +87,12 @@ const ActivityItems = () => {
     <form style={{marginTop: '50px'}} className="main-section-form" name="form" onSubmit={onSubmit}>
       <h1>Activity Items</h1>
       <div>
-        <label>Activity Title</label>
+        <label>Title</label>
         <input type='text' value={title} onChange={onTitleChange} />
       </div>
 
       <div>
-      <label>Activity Type</label>
+      <label>Type</label>
       <select value={activityId} onChange={onActTypeChange}>
       <option value="">Select type</option>
         {activities.map(activity => {
@@ -104,22 +104,22 @@ const ActivityItems = () => {
       </div>
 
       <div>
-        <label>Activity Images</label>
+        <label>Images</label>
         <input type='file' name="files" multiple onChange={onChange} />
       </div>
 
       <div>
-        <label>Activity Description</label>
+        <label>Description</label>
         <textarea type='text' value={description} onChange={onDescrChange} />
       </div>
 
       <div>
-        <label>Activity Direction</label>
+        <label>Direction</label>
         <input type='text' value={direction} onChange={onDirChange} />
       </div>
 
       <div>
-        <label>Activity Booking</label>
+        <label>Booking</label>
         <input type='text' value={book} onChange={onBookChange} />
       </div>
         

@@ -12,13 +12,12 @@ import "./Panel.css";
 
 import PanelMainSection from './Tabs/Sections/PanelMainSection';
 import BeachCategory from './Tabs/Sections/BeachCategory';
-import AccomodationCategory from './Tabs/Sections/AccomodationCategory';
-import EstateCategory from './Tabs/Sections/EstateCategory';
-import FoodDrinksCategory from './Tabs/Sections/FoodDrinksCategory';
-import LearnCategory from './Tabs/Sections/LearnCategory';
-import PointsCategory from './Tabs/Sections/PointsCategory';
-import ShopingCategory from './Tabs/Sections/ShoppingCategory';
+import Accomodation from './Tabs/Sections/Accomodation';
+import EstateCategory from './Tabs/Sections/RealEstate/EstateCategory';
+import PointCategory from './Tabs/Sections/Points/PointCategory';
+import ShoppingCategory from './Tabs/Sections/Shop/ShopCategory';
 import ActivityCategory from './Tabs/Sections/Activities/ActivityCategory';
+import LearnCategory from './Tabs/Sections/ToLearn/Learn';
 
 axios.defaults.withCredentials = true;
 
@@ -63,28 +62,25 @@ class Panel extends React.Component {
           <div label="Main Page">
             <PanelMainSection />
           </div>
-          <div label="Beach Categories">
+          <div label="Beach">
             <BeachCategory />
           </div>
-          <div label="Accomodation Categories">
-            <AccomodationCategory />
+          <div label="Accomodation">
+            <Accomodation />
           </div>
-          <div label="Estate Categories">
+          <div label="Real Estate">
             <EstateCategory />
           </div>
-          <div label="Food&Drinks Categories">
-            <FoodDrinksCategory />
-          </div>
-          <div label="Learn Categories">
+          <div label="To Learn">
             <LearnCategory />
           </div>
-          <div label="Points of Interest Categories">
-            <PointsCategory />
+          <div label="Point of Interest">
+            <PointCategory />
           </div>
-          <div label="Shopping Categories">
-            <ShopingCategory />
+          <div label="Shopping">
+            <ShoppingCategory />
           </div>
-          <div label="Activity Categories">
+          <div label="Activity">
             <ActivityCategory />
           </div>
           

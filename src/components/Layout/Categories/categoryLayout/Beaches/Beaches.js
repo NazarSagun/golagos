@@ -29,7 +29,6 @@ class Beaches extends React.Component {
   
   render() {
 
-    console.log(this.props.beaches)
     return (
       <React.Fragment>
         <Navigation />

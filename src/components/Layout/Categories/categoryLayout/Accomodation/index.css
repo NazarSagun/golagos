@@ -1,0 +1,12 @@
+.dir-button {
+  display: flex;
+  justify-content: center;
+}
+
+.dir-button a {
+  padding: 10px 20px;
+  background-color: rgb(88, 168, 214);
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
