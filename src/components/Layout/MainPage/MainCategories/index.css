@@ -6,18 +6,7 @@
 }
 .main-page-article {
   position: relative;
-}
-
-.main-page-article:nth-child(3) .article-title {
-  width: 140px;
-}
-
-.main-page-article:nth-child(6) .article-title {
-  width: 225px;
-}
-
-.main-page-article:nth-child(8) .article-title {
-  width: 170px;
+  margin-bottom: 45px;
 }
 
 .cards img {
@@ -27,17 +16,23 @@
 }
 
 .article-title {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #000;
-  padding: 10px;
-  background-color: #fff;
-  font-family: 'Montserrat', sans-serif;
+  margin-top: -75px;
   text-align: center;
+}
+
+.article-title div {
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  padding: 0px 20px;
+}
+
+.article-title h1 {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
+  font-size: 13px;
   text-transform: uppercase;
+  text-decoration: none;
+  color: #000;
   letter-spacing: 1px;
 }
 
@@ -88,17 +83,6 @@
 }
 
 @media screen and (max-width: 1536px) {
-  .main-page-article:nth-child(3) .article-title {
-    width: 115px;
-  }
-  
-  .main-page-article:nth-child(6) .article-title {
-    width: 185px;
-  }
-  
-  .main-page-article:nth-child(8) .article-title {
-    width: 140px;
-  }
   .cat-title {
     width: 70%;
     margin: 80px auto;
@@ -117,7 +101,10 @@
     font-size: 40px;
   }
   .article-title {
-    font-size: 15px;
+    margin-top: -65px;
+  }
+  .article-title h1 {
+    font-size: 10px;
   }
 }
 
@@ -131,10 +118,6 @@
 }
 
 @media screen and (max-width: 1366px) {
-  .article-title {
-    font-size: 12px;
-    bottom: 20px;
-  }
   .cards img {
     height: 30vh;
   }
@@ -145,21 +128,6 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .main-page-article:nth-child(3) .article-title {
-    width: 95px;
-  }
-  
-  .main-page-article:nth-child(6) .article-title {
-    width: 150px;
-  }
-  
-  .main-page-article:nth-child(8) .article-title {
-    width: 115px;
-  }
-  .article-title {
-    font-size: 12px;
-    bottom: 20px;
-  }
   .cards img {
     height: 30vh;
   }
@@ -170,10 +138,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .article-title {
-    font-size: 10px;
-    bottom: 10px;
-  }
   .cards img {
     height: 20vh;
   }
@@ -183,23 +147,7 @@
   }
 }
 
-
-
-
-
 @media screen and (max-width: 768px) {
-  .main-page-article:nth-child(3) .article-title {
-    width: 70px;
-  }
-  
-  .main-page-article:nth-child(6) .article-title {
-    width: 105px;
-  }
-  
-  .main-page-article:nth-child(8) .article-title {
-    width: 80px;
-  }
-  
   .cards {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-gap: 20px;
@@ -209,8 +157,10 @@
     height: 15vh;
   }
   .article-title {
-    font-size: 8px;
-    bottom: 20px;
+    margin-top: -45px;
+  }
+  .article-title h1 {
+    font-size: 6px;
   }
   .cat-title {
     font-size: 25px;
@@ -222,17 +172,6 @@
 }
 
 @media screen and (max-width: 415px) {
-  .main-page-article:nth-child(3) .article-title {
-    width: 115px;
-  }
-  
-  .main-page-article:nth-child(6) .article-title {
-    width: 185px;
-  }
-  
-  .main-page-article:nth-child(8) .article-title {
-    width: 140px;
-  }
   .cards {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
@@ -242,8 +181,10 @@
     height: 40vh;
   }
   .article-title {
-    width: auto;
-    font-size: 15px;
+    margin-top: -65px;
+  }
+  .article-title h1 {
+    font-size: 10px;
   }
   .cat-title {
     font-size: 25px;
@@ -255,7 +196,7 @@
 }
 @media screen and (max-width: 376px) {
   .article-title {
-    font-size: 12px;
+    font-size: 10px;
   }
   .cat-title {
     font-size: 20px;

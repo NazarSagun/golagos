@@ -11,8 +11,8 @@ import Tabs from "./Tabs/Tabs";
 import "./Panel.css";
 
 import PanelMainSection from './Tabs/Sections/PanelMainSection';
-import BeachCategory from './Tabs/Sections/BeachCategory';
-import Accomodation from './Tabs/Sections/Accomodation';
+import BeachCategory from './Tabs/Sections/Beach/BeachCategory';
+import Accomodation from './Tabs/Sections/Accomodation/Accomodation';
 import EstateCategory from './Tabs/Sections/RealEstate/EstateCategory';
 import PointCategory from './Tabs/Sections/Points/PointCategory';
 import ShoppingCategory from './Tabs/Sections/Shop/ShopCategory';

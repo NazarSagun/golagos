@@ -3,7 +3,7 @@ import './index.css';
 
 import {Link} from 'react-router-dom';
 
-class AccomodationsItems extends React.Component {
+class AccomodationItems extends React.Component {
 
   constructor(props) {
     super(props);
@@ -11,17 +11,19 @@ class AccomodationsItems extends React.Component {
 
   render() {
 
+    console.log(this.props, "props")
+
     return (
       <React.Fragment>
         
         <section className="category-cards">
-          {this.props.accomodations.map(accomodation => {
+          {this.props.accomodation.map(acc => {
             return (
-              <Link key={accomodation.id} to={`/Accomodation/${accomodation.id}`}>
+              <Link key={acc.id} to={`/Accomodation/${acc.name}`}>
               <article className="category-cards-items">
                 <div>
-                  <img className="cards-img" src={`images/categories/${accomodation.img}`} />
-                  <h1 className="category-cards-title">{accomodation.name}</h1>
+                  <img className="cards-img" src={`images/categories/${acc.img}`} />
+                  <h1 className="category-cards-title">{acc.name}</h1>
                 </div>
               </article>
               </Link>
@@ -35,4 +37,4 @@ class AccomodationsItems extends React.Component {
   }
 }
 
-export default AccomodationsItems;
+export default AccomodationItems;

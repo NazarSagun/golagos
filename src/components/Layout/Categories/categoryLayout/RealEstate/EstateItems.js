@@ -22,9 +22,17 @@ class EstateItems extends React.Component {
             <div key={i.id} label={i.name}> 
               <div className="tab-container">
   
-              <Swiper 
+              <Swiper
+                breakpoints={{
+                  375: {
+                    slidesPerView: 2,
+                  },
+                  1280: {
+                    slidesPerView: 3,
+                  },
+                }}
                 spaceBetween={1}
-                slidesPerView={3}
+              
               >
               {i.estate_items.map((a) => (
                 <SwiperSlide key={a.id}>

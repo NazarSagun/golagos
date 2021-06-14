@@ -23,8 +23,15 @@ class LearnItems extends React.Component {
               <div className="tab-container">
   
               <Swiper 
+                breakpoints={{
+                  375: {
+                    slidesPerView: 2,
+                  },
+                  1280: {
+                    slidesPerView: 3,
+                  },
+                }}
                 spaceBetween={1}
-                slidesPerView={3}
               >
               {i.learn_items.map((a) => (
                 <SwiperSlide key={a.id}>

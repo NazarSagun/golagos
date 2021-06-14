@@ -170,3 +170,14 @@
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
 }
+
+@media screen and (max-width: 414px) {
+  .category-cards {
+    grid-gap: 0;
+    margin: 120px 0;
+  }
+  .tab-list-item {
+    font-size: 15px;
+    text-align: center;
+  }
+}

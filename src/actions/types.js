@@ -8,7 +8,6 @@ export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
-export const FETCH_LANGUAGE = 'FETCH_LANGUAGE';
 
 export const FETCH_BEACHES = 'FETCH_BEACHES';
 export const FETCH_BEACH = 'FETCH_BEACH';

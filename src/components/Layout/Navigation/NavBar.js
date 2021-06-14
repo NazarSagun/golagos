@@ -1,10 +1,14 @@
 import React from "react";
 import "./index.css";
-import {fetchLanguage} from '../../../actions';
 
 import {NavLink, Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import Select from './Select';
+
+//i18
+
+import { supportedLocales } from "../../../110n/config";
+
 
 const nav = [
   {id: 1, link: '/Lagos', name: 'Lagos'},
@@ -12,12 +16,6 @@ const nav = [
   {id: 3, link: '/Real Estate', name: 'Real Estate'},
   {id: 4, link: '/AboutUs', name: 'About Us'},
 ];
-
-const language = [
-  { id: 0, value: 'en', icon: 'united-kingdom.png'},
-  { id: 1, value: 'de', icon: 'germany.png'},
-  { id: 2, value: 'pt', icon: 'portugal.png'}
-]
 
 class NavBar extends React.Component {
   
@@ -51,8 +49,6 @@ class NavBar extends React.Component {
 
   componentDidMount() {
 
-    this.props.fetchLanguage()
-
     window.addEventListener('scroll', this.onScroll);
 
     return () => {
@@ -82,7 +78,7 @@ class NavBar extends React.Component {
         
         </div>
 
-        <Select language={this.props.language} items={language} />
+        <Select language={this.props.locale} supportedLocales={supportedLocales} />
 
         <div onClick={this.props.open} className="nav-icon">
           <img className={`${this.state.menu}`} width="20px" src='images/icons/menu.svg' />
@@ -94,8 +90,8 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    language: state.language.selectedLanguage
+    locale: state.i18n.locale
   }
 }
 
-export default connect(mapStateToProps, {fetchLanguage})(NavBar);
+export default connect(mapStateToProps, null)(NavBar);

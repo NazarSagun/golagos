@@ -114,6 +114,7 @@
 }
 
 .nav-icon {
+  height: 19px;
   cursor: pointer;
   margin-right: 5px;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -209,7 +210,7 @@
     padding: 0 2rem;
   }
   .nav-items a {
-    font-size: 18px;
+    font-size: 16px;
   }
   .nav-logo {
     margin-right: 0;

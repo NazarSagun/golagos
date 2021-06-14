@@ -58,6 +58,7 @@ class App extends React.Component {
           <ScrollToTop>
             <Switch>
               <Route path="/" exact component={MainPage} />
+              <Route path={`/lang=${this.props.locale}`} exact component={MainPage} />
               <Route path="/Login" exact component={Login} />
               <Route path="/AboutUs" exact component={AboutUs} />
               <Route path="/Services" exact component={Services} />
@@ -83,8 +84,10 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   const { user } = state.auth;
+  const { locale } = state.i18n;
   return {
     user,
+    locale: !localStorage.lang ? locale : localStorage.lang
   };
 }
 

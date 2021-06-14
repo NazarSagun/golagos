@@ -1,19 +1,19 @@
+import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import {changeLanguage} from '../../../actions';
+import { setLocaleWithFallback } from "../../../actions";
 
 
 class Select extends React.Component {
   constructor(props) {
     super(props);
-    this.onLanguageChange = this.onLanguageChange.bind(this)
     this.state = {
       showItems: false,
       selectedItem: this.props.language
     }
   }
-// this.props.items[0].icon
+  
   dropDown = () => {
     this.setState(prevState => ({
       showItems: !prevState.showItems
@@ -27,19 +27,20 @@ class Select extends React.Component {
     });
   };
 
-  onLanguageChange(e) {
-    this.props.changeLanguage(e)
-  }
+  handleLanguageLinkClick = (e, code) => {
+    e.preventDefault();
+    this.props.setLocaleWithFallback(code);
+  };
 
   render() {
 
-    // console.log(this.props.language)
+    console.log(window.location.href)
 
     return (
       <div className="select-box--box side">
         <div className="select-box--container">
           <div  onClick={this.dropDown} className="select-box--selected-item">
-            <img style={{width: '20px', height: '20px'}} src={`images/icons/${this.props.language}`} />
+            <img style={{width: '20px', height: '20px'}} src={`images/icons/${this.props.language + ".png"}`} />
           </div>
 
           <div
@@ -47,15 +48,21 @@ class Select extends React.Component {
             className={"select-box--items"}
             
           >
-            {this.props.items.map(item => (
+            {Object.values(this.props.supportedLocales).map(code => (
               <div
-                key={item.id}
-                onClick={() => this.selectItem(item.icon)}
-                className={this.state.selectedItem === item ? "selected" : ""}
+                key={code}
+                
+                onClick={e => this.handleLanguageLinkClick(e, code)}
+                className={code === this.props.language ? "selected" : ""}
               >
-              <img onClick={this.onLanguageChange} id={item.icon} style={{width: '20px', height: '20px'}} src={`images/icons/${item.icon}`} />
+                <div id={code}>
+                  {/* <a href={`${window.location.href}lang=${code}`}> */}
+                    <img onClick={() => this.selectItem(code)} style={{width: '20px', height: '20px'}} src={`images/icons/${code + ".png"}`} />
+                  {/* </a> */}
+                </div>
               </div>
             ))}
+
           </div>
         </div>
       </div>
@@ -63,11 +70,12 @@ class Select extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    changeLanguage: e => dispatch(changeLanguage(e)),
+    language: !localStorage.lang ? state.i18n.locale : localStorage.lang
   }
 }
 
-export default connect(null, mapDispatchToProps)(Select);
+const mapDispatchToProps =  { setLocaleWithFallback };
 
+export default connect(mapStateToProps, mapDispatchToProps)(Select);

@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import axios from '../../../../../api';
+import axios from '../../../../../../api';
 
-import './index.css';
+import '../index.css';
 
-const Accomodation = () => {
+const BeachCategory = () => {
 
   const [files, setFiles] = useState(null);
+  const [lang, setLang] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [book, setBook] = useState('');
   const [direction, setDirection] = useState('');
   const [message, setMessage] = useState('');
 
@@ -16,14 +16,15 @@ const Accomodation = () => {
     setFiles(e.target.files);
   };
 
+  const onLangChange = e => {
+    setLang(e.target.value);
+  };
+
   const onTextChange = e => {
     setTitle(e.target.value);
   };
   const onDescriptionChange = e => {
     setDescription(e.target.value);
-  };
-  const onBookChange = e => {
-    setBook(e.target.value);
   };
   const onDirectionChange = e => {
     setDirection(e.target.value);
@@ -35,13 +36,13 @@ const Accomodation = () => {
     Array.from(files).map(file => {
       formData.append('files', file);
     });
+    formData.append('lang', lang);
     formData.append('title', title);
     formData.append('description', description);
-    formData.append('book', book);
     formData.append('direction', direction);
 
     try {
-      await axios.post('/accomodation', formData, {
+      await axios.post('/beaches', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -51,7 +52,6 @@ const Accomodation = () => {
       setTitle('');
       setDescription('');
       setDirection('');
-      setBook('');
       
       const timer = setTimeout(() => {
         setMessage('')
@@ -71,26 +71,34 @@ const Accomodation = () => {
     <React.Fragment>
       <form id="beachForm" className="main-section-form" onSubmit={onSubmit}>
         <div>
-          <label>Title</label>
+          <label>Beach Title</label>
           <input type='text' value={title} onChange={onTextChange} />
         </div>
         <div>
-          <label>Images</label>
+          <label>Beach Image</label>
           <input type='file' name="singleFile" multiple onChange={onChange} />
         </div>
         
         <div>
-          <label>Description</label>
+          <label>Beach Description</label>
           <textarea style={{resize: 'vertical', outline: 'none'}} type='text' value={description} onChange={onDescriptionChange} />
         </div>
         <div>
-          <label>Direction</label>
+          <label>Single Rirection</label>
           <input type='text' value={direction} onChange={onDirectionChange} />
         </div>
+
         <div>
-          <label>Booking</label>
-          <input type='text' value={book} onChange={onBookChange} />
-        </div> 
+          <label>Language</label>
+          <select onChange={onLangChange}>
+            <option value="">Select language</option>
+            <option value="en">en</option>
+            <option value="de">de</option>
+            <option value="fr">fr</option>
+            <option value="ru">ru</option>
+            <option value="pt">pt</option>
+          </select>
+        </div>
         
         <div>
           <button className="submit-btn" type='submit'>Submit</button>
@@ -101,4 +109,4 @@ const Accomodation = () => {
   );
 };
 
-export default Accomodation;
+export default BeachCategory;

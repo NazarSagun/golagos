@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {fetchAccomodation} from '../../../../../actions';
 
+import axios from '../../../../../api';
+
 import AccomodationSingleShow from './AccomodationSingleShow';
 import Navigation from '../../../Navigation/Navigation';
 import Footer from '../../../Footer';
@@ -10,12 +12,32 @@ import './index.css';
 
 class AccomodationSingle extends React.Component {
 
+  state = {
+    cat: [],
+    loading: true
+  }
+
   _isMounted = false;
 
+  // componentDidMount() {
+  //   this._isMounted = true;
+  //   this.props.fetchAccomodation(this.props.match.params.id);
+  // }
+
   componentDidMount() {
-    this._isMounted = true;
-    this.props.fetchAccomodation(this.props.match.params.id);
+
+    axios.post(`/accomodation/${this.props.match.params.id}`, {lang: this.props.locale})
+    .then(data => {
+      this.setState({cat: data.data, loading: false})
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+    
   }
+
+  
 
   componentWillUnmount() {
     this._isMounted = false;
@@ -23,7 +45,9 @@ class AccomodationSingle extends React.Component {
 
   render() {
 
-    const render = !this.props.accomodation ? <Loader /> : <AccomodationSingleShow accomodation={this.props.accomodation} />
+    console.log(this.state.cat, 'state')
+
+    const render = !this.state.cat ? <Loader /> : <AccomodationSingleShow accomodation={this.state.cat} />
 
     return (
       <div>
@@ -36,9 +60,9 @@ class AccomodationSingle extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    accomodation: state.data.accomodation[ownProps.match.params.id]
+    locale: !localStorage.lang ? state.i18n.locale : localStorage.lang
   }
 }
 

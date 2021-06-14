@@ -1,13 +1,22 @@
 import axios from '../api';
-import {CHANGE_LANGUAGE, FETCH_BEACHES, FETCH_BEACH, FETCH_ACTIVITIES, FETCH_ACTIVITY, FETCH_ESTATES, FETCH_ESTATE, FETCH_POINT, FETCH_POINTS, FETCH_LANGUAGE, FETCH_LEARN, FETCH_LEARNS, FETCH_ACCOMODATIONS, FETCH_ACCOMODATION, FETCH_SHOP, FETCH_SHOPS, FETCH_INDIVIDUALS, FETCH_INDIVIDUAL} from './types';
+import {FETCH_BEACHES, FETCH_BEACH, FETCH_ACTIVITIES, FETCH_ACTIVITY, FETCH_ESTATES, FETCH_ESTATE, FETCH_POINT, FETCH_POINTS, FETCH_LEARN, FETCH_LEARNS, FETCH_ACCOMODATIONS, FETCH_ACCOMODATION, FETCH_SHOP, FETCH_SHOPS, FETCH_INDIVIDUALS, FETCH_INDIVIDUAL} from './types';
+
+import { setLocale } from "react-redux-i18n";
+import { supportedLocales, fallbackLocale } from "../110n/config";
 
 //Languages
-export const changeLanguage = (e) => dispatch => {
-  dispatch({type: CHANGE_LANGUAGE, payload: e.target.id})
-}
 
-export const fetchLanguage = () => dispatch => {
-  dispatch({type: FETCH_LANGUAGE})
+export const setLocaleWithFallback = (desiredLocale) => {
+
+  const finalLocale = Object.values(supportedLocales).includes(desiredLocale)
+    ? desiredLocale
+    : fallbackLocale;
+
+  if (!localStorage.lang) {
+    localStorage.setItem('lang', finalLocale);
+  } else localStorage.lang = finalLocale
+
+  return dispatch => dispatch(setLocale(finalLocale));
 }
 
 //Beaches
@@ -21,13 +30,6 @@ export const fetchBeach = (beach_id) => async dispatch => {
   const response = await axios.get(`/beaches/${beach_id}`);
 
   dispatch({type: FETCH_BEACH, payload: response.data})
-}
-
-//Accomodation
-export const fetchAccomodations = () => async dispatch => {
-  const response = await axios.get('/accomodation')
-
-  dispatch({type: FETCH_ACCOMODATIONS, payload: response.data})
 }
 
 export const fetchAccomodation = (id) => async dispatch => {

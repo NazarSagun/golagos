@@ -20,8 +20,18 @@ class MixedActivity extends React.Component {
     return (
       <div className="mixed-slider">
         <Swiper
+          breakpoints={{
+            375: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
           spaceBetween={1}
-          slidesPerView={4}
         >
           {this.props.individuals.map(i => (
           <SwiperSlide key={i.id}>

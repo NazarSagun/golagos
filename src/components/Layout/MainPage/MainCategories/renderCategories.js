@@ -3,108 +3,81 @@ import './index.css';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const categories = [
-  {
-    id: 1,
-    cat_en_name: 'Beaches',
-    cat_de_name: 'Beachesde',
-    cat_pt_name: 'Praias',
-    cat_img: 'main-page.jpg',
-  },
-  {
-    id: 2,
-    cat_en_name: 'Accomodations',
-    cat_de_name: 'Accomodationsde',
-    cat_pt_name: 'Accomodationspt',
-    cat_img: 'main-page.jpg',
-  },
-  {
-    id: 3,
-    cat_en_name: 'Real Estate',
-    cat_de_name: 'Real Estatede',
-    cat_pt_name: 'Real Estatept',
-    cat_img: 'main-page.jpg',
-  },
-  {
-    id: 4,
-    cat_en_name: 'To Learn',
-    cat_de_name: 'To Learnde',
-    cat_pt_name: 'To Learnpt',
-    cat_img: 'main-page.jpg',
-  },
-  {
-    id: 5,
-    cat_en_name: 'Shopping',
-    cat_de_name: 'Shoppingde',
-    cat_pt_name: 'Shoppingpt',
-    cat_img: 'main-page.jpg',
-  },
-  {
-    id: 6,
-    cat_en_name: 'Points of Interest',
-    cat_de_name: 'Designde',
-    cat_pt_name: 'Designpt',
-    cat_img: 'main-page.jpg',
-  },
-  {
-    id: 7,
-    cat_en_name: 'Activities',
-    cat_de_name: 'Activitiesde',
-    cat_pt_name: 'Activitiespt',
-    cat_img: 'main-page.jpg',
-  },
-  {
-    id: 8,
-    cat_en_name: 'Food & Drinks',
-    cat_de_name: 'Food & Drinksde',
-    cat_pt_name: 'Food & Drinkspt',
-    cat_img: 'main-page.jpg',
-  }
-]
+import axios from '../../../../api';
+
+import Loader from '../../../HOC/Loader';
 
 class RenderCategories extends React.Component {
 
-  render() {
-
-    return (
-      <section className="cards">
-        {categories.map(cat => {
-          if (this.props.language === 'united-kingdom.png') {
-            return (
-              
-              <article className="main-page-article" key={cat.id}>
-                <Link to={`/${cat.cat_en_name}`}>
-                <img src={`images/categories/${cat.cat_img}`} />
-                <h1 className="article-title">{cat.cat_en_name}</h1>
-                </Link>
-              </article>
-              
-            )
-          } else if (this.props.language === 'germany.png') {
-            return (
-              <article className="main-page-article" key={cat.id}>
-                <img src={`images/categories/${cat.cat_img}`} />
-                <Link to={`/${cat.cat_en_name}`}><h1 className="article-title">{cat.cat_de_name}</h1></Link>
-              </article>
-            )
-          } else if (this.props.language === 'portugal.png') {
-            return (
-              <article className="main-page-article" key={cat.id}>
-                <img src={`images/categories/${cat.cat_img}`} />
-                <Link to={`/${cat.cat_en_name}`}><h1 className="article-title">{cat.cat_pt_name}</h1></Link>
-              </article>
-            )
-          }
-        })}
-      </section>
-    )
+  constructor(props) {
+    super(props)
+    this.state = {
+      cats: [],
+      loading: true
+    }
   }
+
+  componentDidMount() {
+
+    axios.post('/category', {lang: this.props.locale})
+    .then(data => {
+      this.setState({cats: data.data, loading: false})
+    })
+    .catch(err => {
+      console.log(err)
+    }) 
+  }
+
+  componentDidUpdate(prevProps) {
+    
+    if (prevProps.locale !== this.props.locale) {
+
+      axios.post('/category', {lang: this.props.locale})
+      .then(data => {
+        this.setState((state, props) => ({
+          cats: data.data,
+          loading: false
+        }))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+     
+    }
+  }
+
+    render() {
+      if (this.state.loading) {
+        return <Loader />
+      }
+
+      return (
+            <section className="cards">
+        
+                {this.state.cats.map(i => (
+                  <Link key={i.id} to={`/${i.title}`}>
+                  <article className="main-page-article">
+                    <img src={`images/categories/${i.img}`} />
+                    <div className="article-title">
+                      <div>
+                        <h1>{i.title}</h1>
+                      </div>
+                    </div>
+                    
+                  </article>
+                  </Link>
+                ))}
+            
+            </section>
+      )
+    }
+  
 }
 
 const mapStateToProps = (state) => {
   return {
-    language: state.language.selectedLanguage
+    locale: !localStorage.lang ? state.i18n.locale : localStorage.lang
   }
 }
 
-export default connect(mapStateToProps) (RenderCategories);
+export default connect(mapStateToProps, null)(RenderCategories);

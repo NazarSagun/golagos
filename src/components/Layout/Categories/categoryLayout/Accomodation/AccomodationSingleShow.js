@@ -1,12 +1,16 @@
 import React from 'react';
 import './index.css';
 import '../../../MainPage/MainSliders/MainSlider/MainSlider.css';
+import { connect } from 'react-redux';
+
+import axios from '../../../../../api';
 
 import SwiperCore, {Navigation} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
 import AccomodationModal from './AccomodationModal';
+
 
 SwiperCore.use([Navigation])
 
@@ -16,7 +20,26 @@ class AccomodationSingleShow extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      modalInfo: ""
+      modalInfo: "",
+      cat: []
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    
+    if (prevProps.locale !== this.props.locale) {
+
+      axios.post(`/accomodation/${this.props.accomodation.name}`)
+      .then(data => {
+        this.setState((state, props) => ({
+          cat: data.data,
+          loading: false
+        }))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+     
     }
   }
 
@@ -106,4 +129,10 @@ class AccomodationSingleShow extends React.Component {
   }
 }
 
-export default AccomodationSingleShow;
+const mapStateToProps = (state) => {
+  return {
+    locale: !localStorage.lang ? state.i18n.locale : localStorage.lang
+  }
+}
+
+export default connect(mapStateToProps, null)(AccomodationSingleShow);

@@ -1,11 +1,12 @@
 import {combineReducers} from 'redux';
-import langReducer from '../reducers/langReducer';
+import { i18nReducer } from "react-redux-i18n";
 import dataReducer from './dataReducer';
 import auth from './auth';
 import message from './message';
 
 export default combineReducers({
-  language: langReducer,
+  // i18n: !localStorage.lang ? i18nReducer : localStorage.lang,
+  i18n: i18nReducer,
   data: dataReducer,
   auth,
   message,

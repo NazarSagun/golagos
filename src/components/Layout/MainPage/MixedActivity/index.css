@@ -4,7 +4,7 @@
 
 .mixed-slider-img {
   width: 100%;
-  height: 60vh;
+  height: 80vh;
   object-fit: cover;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .mixed-slider-item {
-  height: 50vh;
+  height: 70vh;
   width: 100%;
   position: relative;
 }
@@ -57,7 +57,9 @@
   .mixed-slider-item {
     height: 35vh;
   }
-  
+  .mixed-slider-img {
+    height: 40vh;
+  }
 }
 
 
@@ -75,9 +77,6 @@
 }
 
 @media screen and (max-width: 375px) {
-  .mixed-slider-img {
-    height: 40vh;
-   }
   .mixed-slider-item h4 {
     font-size: 9px;
   }

@@ -38,7 +38,7 @@ class LagosBeach extends React.Component {
           <h3 className="cat-descr">The beaches of Sagres are simple stunning. There are four beaches within walking distance of the town: Praia da Mareta, Praia do Tonel. Praia da Mareta is the most popular one, offering medium surfing waves, a large sandy beach and shelter from the almost constant breeze.</h3>
         </section>
         
-        <section className="category-cards">
+        <section className="category-cards lagos">
           {this.props.beaches.map(beach => {
             return (
               <Link key={beach.beach_id} to={`/Beaches/${beach.beach_id}`}>
@@ -62,7 +62,6 @@ class LagosBeach extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    language: state.language.selectedLanguage,
     beaches: Object.values(state.data.data),
     isFetching: state.data.isFetching
   }
